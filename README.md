@@ -1,6 +1,12 @@
 # Project Name
-
+Feast Finder
 > Project description
+
+## CRUD
+  - GET - /api/:restaurantName/reviews
+  - POST - /api/:restaurantName/reviews
+  - PUT - /api/:restaurantName/reviews
+  - DELETE -/api/:restaurantName/reviews
 
 ## Related Projects
 
