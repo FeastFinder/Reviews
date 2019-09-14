@@ -5,8 +5,8 @@ Feast Finder
 ## CRUD
   - GET - /api/:restaurantName/reviews
   - POST - /api/:restaurantName/reviews
-  - PUT - /api/:restaurantName/reviews
-  - DELETE -/api/:restaurantName/reviews
+  - PUT - /api/:restaurantName/reviews/:id
+  - DELETE -/api/:restaurantName/reviews/:id
 
 ## Related Projects
 
