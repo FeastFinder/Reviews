@@ -23,7 +23,7 @@ const seedRestaurants = () => {
 
 const seedUsers = () => {
   let background = ['#BB6ACD', '#D86441', '#6C8AE4', '#DF4E96'];
-  for (var i = 1; i <= 300; i++) {
+  for (var i = 1; i <= 100; i++) {
     let randomUser =  faker.name.firstName();
     if (getRandomIntInclusive(1, 10) > 3) {
       randomUser += faker.name.lastName();
@@ -44,7 +44,7 @@ const seedUsers = () => {
     }
     let randomTotalReviews = getRandomIntInclusive(1, 30);
     if (getRandomIntInclusive(1, 10) > 7) {
-      randomTotalReviews = getRandomIntInclusive(31, 200);
+      randomTotalReviews = getRandomIntInclusive(31, 100);
     }
 
     let input = "INSERT INTO Users set ?";
@@ -69,8 +69,8 @@ const seedUsers = () => {
 
 const seedReviews = () => {
   let noiseLevel = ['Quiet', 'Moderate', 'Energetic'];
-  for (var i = 1; i <= 5000; i++) {
-    let randomUserID =  getRandomIntInclusive(1, 300);
+  for (var i = 1; i <= 1000; i++) {
+    let randomUserID =  getRandomIntInclusive(1, 100);
     let randomReview = faker.lorem.paragraph();
     let randomFood = getRandomIntInclusive(1, 5);
     let randomService = getRandomIntInclusive(1, 5);

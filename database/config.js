@@ -1,7 +1,5 @@
 module.exports = {
-  host: 'database',
+  host: 'localhost',
   user: 'root',
-  password: '',
-  database: 'reviewsDB',
-  port: '',
+  database: 'reviewsDB'
 };
