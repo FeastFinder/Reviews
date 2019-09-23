@@ -19,6 +19,10 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get('/apt/test', (req, res) => {
+  res.send('server is running');
+})
+
 app.get('/api/:restID/reviews', (req, res) => {
   db.getReviews(req.params.restID, (reviews) => {
     res.send(reviews);

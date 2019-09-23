@@ -1,6 +1,9 @@
 ## MAC files ##
 .DS_Store
 .csv
+script/rest.csv
+script/review.csv
+script/user.csv
 
 ## NPM ##
 npm
