@@ -1,8 +1,11 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: 'localhost',
-  database: 'reviewsDB'
+  host: 'ec2-52-53-154-245.us-west-1.compute.amazonaws.com',
+  database: 'reviewsDB',
+  user: 'postgres',
+  password: 'secure',
+  port: '5432'
 })
 
 exports.getTotalReviewsOfUser = (id, callback) => {
