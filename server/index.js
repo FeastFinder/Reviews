@@ -19,7 +19,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/apt/test', (req, res) => {
+app.get('/api/test', (req, res) => {
   res.send('server is running');
 })
 
