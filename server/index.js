@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const db = require('../database/index.js');
+const db = require('../script/postgres/index.js');
 const path = require('path');
 const compression = require('compression');
+require('newrelic');
 
 const PORT = 3003;
-
 
 app.use(express.static(path.join(__dirname,  '../public')));
 
@@ -19,20 +19,33 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/:restaurantName/reviews', (req, res) => {
-
+app.get('/api/:restID/reviews', (req, res) => {
+  db.getReviews(req.params.restID, (reviews) => {
+    res.send(reviews);
+  })
 });
 
-app.post('/api/:restaurantName/reviews', (req, res) => {
-
+app.post('/api/:restID/reviews', (req, res) => {
+  // req.params.restID
+  // var fakeData = ['Quo modi eligendi. Atque amet qui aperiam exercitationem ipsum ipsam. Dignissimos dolorum totam velit dolores. Vel odio mollitia. Laboriosam assumenda sit ut ab enim in.', 3.5, 3, 2, 5, 4, 'Quiet', false, '2019-05-16T03:15:39.498Z', 5253935, 1552979]
+  var data = req.body;
+  db.addReview(data, () => {
+    res.send('posted');
+  });
 });
 
-app.put('/api/:restaurantName/reviews/:id', (req, res) => {
-
+app.put('/api/:restID/reviews/:id', (req, res) => {
+  var data = []; //generate from req.body
+  // var fakeData = ['Quo modi eligendi. Atque amet qui aperiam exercitationem ipsum ipsam. Dignissimos dolorum totam velit dolores. Vel odio mollitia. Laboriosam assumenda sit ut ab enim in.', 3.5, 3, 2, 5, 4, 'Quiet', false, '2019-05-16T03:15:39.498Z', 5253935, 1552979]
+  db.addReview(data, req.params.id, () => {
+    res.send('posted');
+  });
 });
 
-app.delete('/api/:restaurantName/reviews/:id', (req, res) => {
-
+app.delete('/api/:restID/reviews/:id', (req, res) => {
+  db.deleteReview(req.params.id, () => {
+    res.send('deleted');
+  })
 });
 
 app.listen(PORT, function() {

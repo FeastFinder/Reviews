@@ -1,0 +1,9 @@
+config:
+  target: 'http://localhost:3003'
+  phases:
+    - duration: 60
+      arrivalRate: 1
+scenarios:
+  - flow:
+    - get:
+        url: "/api/{{$randomNumber(1,9999999)}}/reviews"
