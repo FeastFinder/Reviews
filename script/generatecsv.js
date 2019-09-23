@@ -29,7 +29,7 @@ const randomNum = (min, max) => {
 }
 
 const restaurant = (quantity) => {
-  return `${quantity},L${quantity}\n`
+  return `L${quantity}\n`
 }
 
 const user = (quantity) => {
@@ -42,7 +42,7 @@ const user = (quantity) => {
     name += lastName;
     init += lastName[0];
   }
-  return `${quantity},${name},${init},${background[randomNum(0, 3)]},${faker.address.city()},${vip}\n`
+  return `${name},${init},${background[randomNum(0, 3)]},${faker.address.city()},${vip}\n`
 }
 
 const review = (quantity) => {
@@ -56,14 +56,9 @@ const review = (quantity) => {
   var noise = noiseLevel[randomNum(0, 2)];
   var recommend = faker.random.boolean();
   var date = faker.date.past().toISOString();
-  if (quantity !== 1) {
-    return `${quantity},${review},${overall},${food},${service},${ambience},${value},${noise},${recommend},${date},${randomNum(1, 9999999)},${randomNum(1, 9999999)}\n`
-  } else {
-    return `id,review,overall,food,service,ambience,value,noise,would_recommend,date,user_id,restaurant_id\n${quantity},${review},${overall},${food},${service},${ambience},${value},${noise},${recommend},${date},${randomNum(1, 9999999)},${randomNum(1, 9999999)}\n`
-  }
+  return `${review},${overall},${food},${service},${ambience},${value},${noise},${recommend},${date},${randomNum(1, 9999999)},${randomNum(1, 9999999)}\n`
 }
 
 // generate('rest.csv', 9999999, restaurant);
 // generate('user.csv', 9999999, user);
-// generate('review.csv', 99999999, review);
-// generate('test.csv', 10, review);
+generate('review.csv', 99999999, review);

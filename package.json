@@ -14,7 +14,13 @@
     "create": "mysql -u root < database/schema.sql",
     "seed": "node database/seed.js",
     "test-watch": "jest --watchAll --config jest.config.js",
-    "test-coverage": "jest --verbose --coverage"
+    "test-coverage": "jest --verbose --coverage",
+    "createCSV": "node ./script/generatecsv.js",
+    "buildpsql": "psql -d reviewsDB -f schema.sql",
+    "seedmongoA": "mongoimport --uri 'mongodb://localhost/reviewsDB' --collection restaurants --type csv --file '/Users/NatalieSpace/hrsf122/sdc/Reviews/script/rest.csv' --headerline",
+    "seedmongoB": "mongoimport --uri 'mongodb://localhost/reviewsDB' --collection users --type csv --file '/Users/NatalieSpace/hrsf122/sdc/Reviews/script/user.csv' --headerline",
+    "seedmongoC": "mongoimport --uri 'mongodb://localhost/reviewsDB' --collection reviews --type csv --file '/Users/NatalieSpace/hrsf122/sdc/Reviews/script/review.csv' --headerline",
+    "seedpsql": "psql -d reviewsDB -f copy.sql"
   },
   "dependencies": {
     "axios": "^0.19.0",
@@ -31,6 +37,7 @@
     "moment": "^2.24.0",
     "mongoose": "5.6.9",
     "mysql": "^2.17.1",
+    "newrelic": "^5.11.0",
     "nodemon": "^1.19.1",
     "parser": "^0.1.4",
     "pg": "^7.12.1",
