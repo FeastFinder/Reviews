@@ -3,8 +3,8 @@ const { Pool } = require('pg');
 const pool = new Pool({
   host: 'ec2-52-53-154-245.us-west-1.compute.amazonaws.com',
   database: 'reviewsDB',
-  user: 'postgres',
-  password: 'secure',
+  user: 'power_user',
+  password: 'superpassword',
   port: '5432'
 })
 
