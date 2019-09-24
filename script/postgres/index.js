@@ -1,11 +1,10 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: 'ec2-13-57-17-213.us-west-1.compute.amazonaws.com',
+  host: 'ec2-13-57-17-213.us-west-1.compute.amazonaws.com:5432',
   database: 'reviewsDB',
   user: 'power_user',
-  password: 'superpassword',
-  port: '5432'
+  password: 'superpassword'
 })
 
 // const pool = new Pool({
@@ -22,6 +21,7 @@ exports.getTotalReviewsOfUser = (id, callback) => {
 }
 
 exports.getReviews = (id, callback) => {
+  console.log('we are in controller');
   var query = `SELECT * FROM users JOIN reviews ON reviews.restaurant_id=${id} AND reviews.user_id=users.id;`;
   var totalReview = async (array, cb) => {
     let start = 0;
@@ -50,6 +50,7 @@ exports.getReviews = (id, callback) => {
     }
   }
   pool.query(query, (err, res) => {
+    console.log('connected!')
     if(err) console.log(err);
     else totalReview(res.rows, callback);
   })
