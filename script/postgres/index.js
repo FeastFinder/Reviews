@@ -24,6 +24,7 @@ exports.getReviews = (id, callback) => {
   console.log('we are in controller');
   var query = `SELECT * FROM users JOIN reviews ON reviews.restaurant_id=${id} AND reviews.user_id=users.id;`;
   var totalReview = async (array, cb) => {
+    console.log('in async query')
     let start = 0;
     while(start < array.length) {
       var totalQuery = `SELECT * FROM reviews WHERE user_id = ${array[start].user_id}`
@@ -50,7 +51,7 @@ exports.getReviews = (id, callback) => {
     }
   }
   pool.query(query, (err, res) => {
-    console.log('connected!')
+    console.log('connected!', err, res.rows);
     if(err) console.log(err);
     else totalReview(res.rows, callback);
   })
