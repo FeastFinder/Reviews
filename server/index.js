@@ -8,7 +8,8 @@ require('newrelic');
 
 const PORT = 3003;
 
-app.use(express.static(path.join(__dirname,  '../public')));
+// app.use(express.static(path.join(__dirname,  '../public')));
+app.use('/:id/', express.static(path.join(__dirname,  '../public')));
 
 app.use(bodyParser.json());
 

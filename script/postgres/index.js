@@ -8,6 +8,11 @@ const pool = new Pool({
   port: '5432'
 })
 
+// const pool = new Pool({
+//   host: 'localhost',
+//   database: 'reviewsDB'
+// })
+
 exports.getTotalReviewsOfUser = (id, callback) => {
   var query = `SELECT * FROM reviews where user_id = ${id}`;
   pool.query(query, (err, res) => {

@@ -61,4 +61,4 @@ const review = (quantity) => {
 
 // generate('rest.csv', 9999999, restaurant);
 // generate('user.csv', 9999999, user);
-generate('review.csv', 99999999, review);
+generate('review2.csv', 50000000, review);

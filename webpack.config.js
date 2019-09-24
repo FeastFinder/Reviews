@@ -24,5 +24,3 @@ module.exports = {
     library: 'Reviews'
   }
 };
-
-
