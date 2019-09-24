@@ -172,7 +172,7 @@ class App extends React.Component {
   getReviews() {
     var id = document.URL.split('/');
     id = id[id.length - 2];
-    axios.get(`http://ec2-54-219-166-113.us-west-1.compute.amazonaws.com/api/${id}/reviews`)
+    axios.get(`http://ec2-54-219-166-113.us-west-1.compute.amazonaws.com:3003/api/${id}/reviews`)
     .then((response) => {
       // console.log('response: ', response.data);
       this.setState({
