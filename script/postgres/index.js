@@ -31,6 +31,7 @@ exports.getReviews = (id, callback) => {
       if(start !== array.length - 1) {
         await pool.query(totalQuery)
         .then((result) => {
+          console.log('we are in no callback')
           array[start]["total_reviews"] = result.rows.length;
           start ++;
         })
@@ -40,7 +41,8 @@ exports.getReviews = (id, callback) => {
       } else {
         await pool.query(totalQuery)
         .then((result) => {
-          array[start].total_reviews = result.length;
+          console.log('we are in callback')
+          array[start]["total_reviews"] = result.length;
           start ++;
           cb(array);
         })
