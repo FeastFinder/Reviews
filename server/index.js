@@ -20,12 +20,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/test', (req, res) => {
-  res.send('server is running');
-})
+// app.get('/api/test', (req, res) => {
+//   res.send('server is running');
+// })
 
 app.get('/api/:restID/reviews', (req, res) => {
-  console.log(req.params.restID, 'got a req!')
   db.getReviews(req.params.restID, (reviews) => {
     res.send(reviews);
   })

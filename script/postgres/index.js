@@ -49,7 +49,6 @@ exports.getReviews = (id, callback) => {
     }
   }
   pool.query(query, (err, res) => {
-    console.log('connected!', err, res.rows);
     if(err) console.log(err);
     else totalReview(res.rows, callback);
   })
