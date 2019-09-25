@@ -47,7 +47,7 @@ const user = (quantity) => {
 
 const review = (quantity) => {
   var noiseLevel = ['Quiet', 'Moderate', 'Energetic'];
-  var review = faker.lorem.paragraph();
+  var review = faker.lorem.words();
   var food = randomNum(1, 5);
   var service = randomNum(1, 5);
   var ambience = randomNum(1, 5);
@@ -56,9 +56,9 @@ const review = (quantity) => {
   var noise = noiseLevel[randomNum(0, 2)];
   var recommend = faker.random.boolean();
   var date = faker.date.past().toISOString();
-  return `${review},${overall},${food},${service},${ambience},${value},${noise},${recommend},${date},${randomNum(1, 9999999)},${randomNum(1, 9999999)}\n`
+  return `${review},${overall},${food},${service},${ambience},${value},${noise},${recommend},${date},${randomNum(1, 10000)},${randomNum(1, 10000)}\n`
 }
 
 // generate('rest.csv', 9999999, restaurant);
 // generate('user.csv', 9999999, user);
-generate('review2.csv', 100000, review);
+generate('review1.csv', 10000, review);
