@@ -56,9 +56,9 @@ const review = (quantity) => {
   var noise = noiseLevel[randomNum(0, 2)];
   var recommend = faker.random.boolean();
   var date = faker.date.past().toISOString();
-  return `${review},${overall},${food},${service},${ambience},${value},${noise},${recommend},${date},${randomNum(1, 10000)},${randomNum(1, 10000)}\n`
+  return `${review},${overall},${food},${service},${ambience},${value},${noise},${recommend},${date},${randomNum(1, 9999999)},${randomNum(1, 9999999)}\n`
 }
 
 // generate('rest.csv', 9999999, restaurant);
 // generate('user.csv', 9999999, user);
-generate('review1.csv', 10000, review);
+generate('review0.csv', 50000000, review);

@@ -22,16 +22,19 @@ CREATE TABLE reviews (
   id SERIAL PRIMARY KEY,
   review TEXT NOT NULL, 
   overall REAL NOT NULL,
-  food REAL NOT NULL,
+  food INT NOT NULL,
   service REAL NOT NULL,
   ambience REAL NOT NULL,
   value REAL NOT NULL,
   noise noise NOT NULL,
   would_recommend BOOLEAN NOT NULL,
   date TIMESTAMP WITH TIME ZONE NOT NULL,
-  restaurant_id INT NOT NULL REFERENCES restaurants(id),
-  user_id INT NOT NULL REFERENCES users(id)
-); 
+  restaurant_id INT NOT NULL,
+  user_id INT NOT NULL
+);
 
 CREATE INDEX ON reviews(restaurant_id);
 CREATE INDEX ON reviews(user_id);
+
+ALTER TABLE reviews ADD CONSTRAINT reviews_restaurant_id_fkey FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
+ALTER TABLE reviews ADD CONSTRAINT reviews_restaurant_id_fkey FOREIGN KEY (user_id) REFERENCES users(id)
