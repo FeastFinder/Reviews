@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/loaderio-0adb952a970d2b41d6af1319e9730311', (req, res) => {
+app.get('/loaderio-0adb952a970d2b41d6af1319e9730311/', (req, res) => {
   res.send('loaderio-0adb952a970d2b41d6af1319e9730311');
 })
 
