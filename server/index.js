@@ -10,7 +10,6 @@ const PORT = 3003;
 
 // app.use(express.static(path.join(__dirname,  '../public')));
 app.use('/:id/', express.static(path.join(__dirname,  '../public')));
-app.use('/', express.static(path.join(__dirname, '../public/loader')));
 
 app.use(bodyParser.json());
 
@@ -21,9 +20,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get('/api/test', (req, res) => {
-//   res.send('server is running');
-// })
+app.get('/loaderio-0adb952a970d2b41d6af1319e9730311', (req, res) => {
+  res.send('loaderio-0adb952a970d2b41d6af1319e9730311');
+})
 
 app.get('/api/:restID/reviews', (req, res) => {
   db.getReviews(req.params.restID, (reviews) => {
