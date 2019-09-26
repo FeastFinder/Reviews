@@ -9,7 +9,7 @@ require('newrelic');
 const PORT = 3003;
 
 // app.use(express.static(path.join(__dirname,  '../public/loader')));
-app.use('/:id/', express.static(path.join(__dirname,  '../public')));
+app.use(express.static(path.join(__dirname,  '../public')));
 
 app.use(bodyParser.json());
 
@@ -20,9 +20,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/loaderio-0f2da847ac5d799054b22fe048366a2b.txt', (req, res) => {
-  res.send('loaderio-0f2da847ac5d799054b22fe048366a2b');
-})
+// app.get('/', (req, res) => {
+
+//   res.send('hello');
+// })
 
 app.get('/api/:restID/reviews', (req, res) => {
   db.getReviews(req.params.restID, (reviews) => {
