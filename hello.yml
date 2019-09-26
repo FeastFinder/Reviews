@@ -1,9 +1,11 @@
 config:
-  target: 'http://localhost:3003'
+  target: 'http://54.219.149.152:3003'
   phases:
     - duration: 60
-      arrivalRate: 1
+      arrivalRate: 50
 scenarios:
   - flow:
-    - get:
-        url: "/api/{{$randomNumber(1,9999999)}}/reviews"
+    - loop:
+      - get:
+          url: "/api/{{$randomNumber(1,9999999)}}/reviews"
+      count: 10
