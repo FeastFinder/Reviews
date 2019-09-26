@@ -10,7 +10,7 @@ const PORT = 3003;
 
 // app.use(express.static(path.join(__dirname,  '../public')));
 app.use('/:id/', express.static(path.join(__dirname,  '../public')));
-app.use(express.static(path.join(__dirname, '../public/loader/loaderio-0adb952a970d2b41d6af1319e9730311.txt')));
+app.use('/', express.static(path.join(__dirname, '../public/loader')));
 
 app.use(bodyParser.json());
 
