@@ -36,5 +36,5 @@ CREATE TABLE reviews (
 CREATE INDEX ON reviews(restaurant_id);
 CREATE INDEX ON reviews(user_id);
 
-ALTER TABLE reviews ADD CONSTRAINT reviews_restaurant_id_fkey FOREIGN KEY (restaurant_id) REFERENCES restaurants(id)
-ALTER TABLE reviews ADD CONSTRAINT reviews_restaurant_id_fkey FOREIGN KEY (user_id) REFERENCES users(id)
+ALTER TABLE reviews ADD FOREIGN KEY (restaurant_id) REFERENCES restaurants(id);
+ALTER TABLE reviews ADD FOREIGN KEY (user_id) REFERENCES users(id);
