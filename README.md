@@ -1,5 +1,4 @@
-# Project Name
-Feast Finder
+# Feast Finder
 A web app for user to make restaurant reservation
 
 ## Related Projects
@@ -13,7 +12,7 @@ A web app for user to make restaurant reservation
 1. [Usage](#Usage)
 1. [Requirements](#requirements)
 1. [Development](#development)
-1. [CRUD] (#crud)
+1. [CRUD](#crud)
 
 ## Usage
 
@@ -51,13 +50,13 @@ npm install
 ## CRUD
   GET - /api/:restaurantID/reviews
     - Returns a list of reviews for given restaurant id
-  - POST - /api/:restaurantID/reviews
+  POST - /api/:restaurantID/reviews
     - Adds a new review for the restaurant
     - Returns a string indicator if the creation is successful
-  - PUT - /api/:restaurantID/reviews/:id
+  PUT - /api/:restaurantID/reviews/:id
     - Updates the logged-in user reviews based on the restaurant id
     - Returns a string indicator if the creation is successful
-  - DELETE -/api/:restaurantID/reviews/:id
+  DELETE -/api/:restaurantID/reviews/:id
     - Deletes the logged-in user reviews for a given restaurant id
     - Returns a string indicator if the creation is successful
 
