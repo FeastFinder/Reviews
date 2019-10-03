@@ -20,8 +20,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/loaderio-0f2da847ac5d799054b22fe048366a2b.txt', (req, res) => {
-  res.send('loaderio-0f2da847ac5d799054b22fe048366a2b');
+app.get('/loaderio-06ced2f563ed6f04001681419edf8e74.txt', (req, res) => {
+  res.send('loaderio-06ced2f563ed6f04001681419edf8e74');
 })
 
 app.get('/api/:restID/reviews', (req, res) => {
