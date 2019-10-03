@@ -45,6 +45,8 @@
     "react-dom": "^16.9.0",
     "react-paginate": "^6.3.0",
     "react-star-ratings": "^2.3.0",
+    "redis": "^2.8.0",
+    "response-time": "^2.3.2",
     "styled-components": "^4.3.2",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7",

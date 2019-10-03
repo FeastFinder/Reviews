@@ -4,35 +4,53 @@ const bodyParser = require('body-parser');
 const db = require('../script/postgres/index.js');
 const path = require('path');
 const compression = require('compression');
+const redis = require('redis');
+const responseTime = require('response-time');
+
 require('newrelic');
 
 const PORT = 3003;
 
-// app.use(express.static(path.join(__dirname,  '../public/loader')));
+const redisClient = redis.createClient();
+
+//check conncetion to redis;
+redisClient.on('connect', function() {
+  console.log('Redis client connected');
+});
+
 app.use(express.static(path.join(__dirname,  '../public')));
 
 app.use(bodyParser.json());
 
 app.use(compression());
 
+app.use(responseTime());
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
 
+//loader config
 app.get('/loaderio-06ced2f563ed6f04001681419edf8e74.txt', (req, res) => {
   res.send('loaderio-06ced2f563ed6f04001681419edf8e74');
 })
 
 app.get('/api/:restID/reviews', (req, res) => {
-  db.getReviews(req.params.restID, (reviews) => {
-    res.send(reviews);
+  redisClient.get(`reviews:${req.params.restID}`, (err, reply) => {
+    if(reply) {
+      const result = JSON.parse(reply);
+      res.send(result);
+    } else {
+      db.getReviews(req.params.restID, (reviews) => {
+        redisClient.setex(`reviews:${req.params.restID}`, 14400, JSON.stringify(reviews))
+        res.send(reviews);
+      })
+    }
   })
 });
 
 app.post('/api/:restID/reviews', (req, res) => {
-  // req.params.restID
-  // var fakeData = ['Quo modi eligendi. Atque amet qui aperiam exercitationem ipsum ipsam. Dignissimos dolorum totam velit dolores. Vel odio mollitia. Laboriosam assumenda sit ut ab enim in.', 3.5, 3, 2, 5, 4, 'Quiet', false, '2019-05-16T03:15:39.498Z', 5253935, 1552979]
   var data = req.body;
   db.addReview(data, () => {
     res.send('posted');
@@ -40,8 +58,7 @@ app.post('/api/:restID/reviews', (req, res) => {
 });
 
 app.put('/api/:restID/reviews/:id', (req, res) => {
-  var data = []; //generate from req.body
-  // var fakeData = ['Quo modi eligendi. Atque amet qui aperiam exercitationem ipsum ipsam. Dignissimos dolorum totam velit dolores. Vel odio mollitia. Laboriosam assumenda sit ut ab enim in.', 3.5, 3, 2, 5, 4, 'Quiet', false, '2019-05-16T03:15:39.498Z', 5253935, 1552979]
+  var data = req.body;
   db.addReview(data, req.params.id, () => {
     res.send('posted');
   });
